@@ -1,0 +1,5 @@
+#iclude<stdio.h>
+
+void quick_sort( ){
+      
+}
