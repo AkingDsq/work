@@ -1,5 +1,42 @@
-#iclude<stdio.h>
+#include<stdio.h>
 
-void quick_sort( ){
-      
+#define MAXSIZE 100
+int n;
+int s[MAXSIZE];
+void quick_sort(int q[],int l,int r){
+	if(l >= r) return;
+	int x = q[l],i = l - 1,j = r + 1;
+	while( i < j ){
+		do i ++; while(q[i] < x);
+		do j --; while(q[j] > x);
+		if( i < j){
+			int t = q[i];
+			q[i] = q[j];
+			q[j] = t;
+		}
+	}
+	quick_sort( q , l , j);
+	
+	quick_sort( q , j + 1 , r );
+
+}
+int main(){
+
+	printf("请输入个数n:");
+	scanf("%d", &n);
+	for(int i = 0;i < n;i ++){
+		printf("请输入第%d个数:", i + 1);
+		scanf("%d", &s[i]);
+	}
+	
+	for(int j = 0;j < n;j++){
+		if(j != n-1)
+			printf(" %d",s[j]);
+		else
+			printf(" %d\n",s[j]);
+	}
+
+	quick_sort(s, 0 , n-1);
+	for(int k = 0;k < n;k++) printf(" %d",s[k]);
+	return 0;
 }
